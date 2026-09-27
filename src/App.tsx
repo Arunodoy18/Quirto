@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/shell/AppShell';
 import { Placeholder } from './components/ui/Placeholder';
-import { TwinPreview } from './components/three/TwinPreview';
+import CommandCenter from './features/command-center/CommandCenter';
 import { useWorld } from './hooks/useWorld';
 import { scenarioLabel } from './lib/format';
 import { isDemo } from './services';
@@ -17,7 +17,7 @@ export default function App() {
   return (
     <AppShell status={status}>
       <Routes>
-        <Route path="/" element={<TwinPreview />} />
+        <Route path="/" element={<CommandCenter />} />
         <Route path="/route" element={<Placeholder title="Route Optimization" step={5} />} />
         <Route path="/simulation" element={<Placeholder title="Live Simulation" step={6} />} />
         <Route path="/lab" element={<Placeholder title="Algorithm Lab" step={7} />} />

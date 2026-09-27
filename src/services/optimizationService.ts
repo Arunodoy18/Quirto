@@ -14,7 +14,7 @@ import { world } from './world';
 export interface RunHandle { cancel: () => void; done: Promise<OptimizationRun> }
 
 export const optimizationService = {
-  start(req: RouteRequest, onUpdate: (run: OptimizationRun) => void, opts: { short?: boolean } = {}): RunHandle {
+  start(req: RouteRequest, onUpdate: (run: OptimizationRun) => void, opts: { short?: boolean; delayMs?: number } = {}): RunHandle {
     if (isDemo) {
       const result = world.scene.solve(req);
       eventBus.emit('OPTIMIZATION_STARTED', { request: req });

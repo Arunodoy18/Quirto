@@ -7,7 +7,7 @@
  */
 import type { OptimizationRun, QState, RouteSet } from '@/types/domain';
 
-export function simulateRun(result: RouteSet, opts: { short?: boolean }, onUpdate: (run: OptimizationRun) => void): { cancel: () => void; done: Promise<OptimizationRun> } {
+export function simulateRun(result: RouteSet, opts: { short?: boolean; delayMs?: number }, onUpdate: (run: OptimizationRun) => void): { cancel: () => void; done: Promise<OptimizationRun> } {
   const id = `demo-${Date.now().toString(36)}`;
   const base: OptimizationRun = { id, source: 'demo', status: 'RUNNING', iteration: 0, maxIterations: 0, population: 50, bestCost: null, bestFitness: null, runtimeMs: 0, convergence: [], qState: [], result: null };
   if (!result.primary) {
@@ -20,11 +20,11 @@ export function simulateRun(result: RouteSet, opts: { short?: boolean }, onUpdat
   const start = Math.min(0.999, fin * (1.6 + Math.random() * 0.45));
   let i = 0, best = start, rt = 0;
   const conv = [{ iteration: 0, cost: start }];
-  let timer: ReturnType<typeof setInterval> | undefined;
+  let timer: ReturnType<typeof setInterval> | undefined = undefined;
   let resolve!: (r: OptimizationRun) => void;
   const done = new Promise<OptimizationRun>((r) => { resolve = r; });
   const target = result.qState;
-  timer = setInterval(() => {
+  const tick = () => {
     i++;
     rt += 1.7 + Math.random() * 0.9;
     const tgt = fin + (start - fin) * Math.exp(-i / (N / 4.5));
@@ -38,6 +38,7 @@ export function simulateRun(result: RouteSet, opts: { short?: boolean }, onUpdat
     const run: OptimizationRun = { ...base, status: end ? 'CONVERGED' : 'RUNNING', iteration: i, maxIterations: N, bestCost: best, bestFitness: 1 / (1 + best), runtimeMs: Math.round(rt), convergence: conv.slice(), qState: q, result: end ? result : null };
     onUpdate(run);
     if (end) { clearInterval(timer); resolve(run); }
-  }, 80);
-  return { cancel: () => clearInterval(timer), done };
+  };
+  const delay = setTimeout(() => { timer = setInterval(tick, 80); }, opts.delayMs ?? 0);
+  return { cancel: () => { clearTimeout(delay); clearInterval(timer); }, done };
 }
