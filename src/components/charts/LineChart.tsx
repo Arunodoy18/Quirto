@@ -21,13 +21,19 @@ interface Props {
   ariaLabel: string;
 }
 
-export function LineChart({ series, height = 180, min, max, xCount, yTicks = 3, decimals = 0, xLabels, empty, dot, ariaLabel }: Props) {
+export function LineChart({ series, height = 180, min, max, xCount, yTicks = 3, decimals, xLabels, empty, dot, ariaLabel }: Props) {
   const [ref, W] = useElementWidth<HTMLDivElement>();
   const all = series.flatMap((s) => s.values);
   const has = all.length > 1;
   let lo = min ?? Math.min(...all), hi = max ?? Math.max(...all);
   if (!has) { lo = 0; hi = 1; }
-  if (min == null && max == null && has) { const p = (hi - lo) * 0.12 || 1; lo -= p; hi += p; }
+  if (min == null && max == null && has) {
+    const p = (hi - lo) * 0.12 || Math.max(1, Math.abs(hi) * 0.1);
+    const nonNeg = lo >= 0;
+    lo -= p; hi += p;
+    if (nonNeg) lo = Math.max(0, lo);
+  }
+  const dec = decimals ?? (hi - lo < 6 ? 1 : 0);
   const padL = 44, padR = 10, padT = 10, padB = xLabels ? 22 : 10;
   const H = height;
   const n = Math.max(2, xCount ?? Math.max(...series.map((s) => s.values.length)));
@@ -40,7 +46,7 @@ export function LineChart({ series, height = 180, min, max, xCount, yTicks = 3, 
       {ticks.map((v, i) => (
         <g key={i}>
           <line x1={padL} x2={W - padR} y1={Y(v)} y2={Y(v)} stroke="var(--line-soft)" />
-          <text x={padL - 6} y={Y(v) + 3} textAnchor="end" fill="var(--muted)" fontSize="10" fontFamily="var(--font-mono)">{v.toFixed(decimals)}</text>
+          <text x={padL - 6} y={Y(v) + 3} textAnchor="end" fill="var(--muted)" fontSize="10" fontFamily="var(--font-mono)">{v.toFixed(dec)}</text>
         </g>
       ))}
       {xLabels?.map((l) => (

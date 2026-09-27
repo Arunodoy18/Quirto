@@ -3,6 +3,7 @@ import { AppShell } from './components/shell/AppShell';
 import { Placeholder } from './components/ui/Placeholder';
 import CommandCenter from './features/command-center/CommandCenter';
 import RouteOptimization from './features/route-optimization/RouteOptimization';
+import LiveSimulation from './features/simulation/LiveSimulation';
 import { useWorld } from './hooks/useWorld';
 import { scenarioLabel } from './lib/format';
 import { isDemo } from './services';
@@ -20,7 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<CommandCenter />} />
         <Route path="/route" element={<RouteOptimization />} />
-        <Route path="/simulation" element={<Placeholder title="Live Simulation" step={6} />} />
+        <Route path="/simulation" element={<LiveSimulation />} />
         <Route path="/lab" element={<Placeholder title="Algorithm Lab" step={7} />} />
         <Route path="/analytics" element={<Placeholder title="Analytics" step={8} />} />
         <Route path="/scenarios" element={<Placeholder title="Scenario Manager" step={9} />} />
