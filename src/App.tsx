@@ -5,6 +5,7 @@ import CommandCenter from './features/command-center/CommandCenter';
 import RouteOptimization from './features/route-optimization/RouteOptimization';
 import LiveSimulation from './features/simulation/LiveSimulation';
 import AlgorithmLab from './features/algorithm-lab/AlgorithmLab';
+import AnalyticsDashboard from './features/analytics/AnalyticsDashboard';
 import { useWorld } from './hooks/useWorld';
 import { scenarioLabel } from './lib/format';
 import { isDemo } from './services';
@@ -24,7 +25,7 @@ export default function App() {
         <Route path="/route" element={<RouteOptimization />} />
         <Route path="/simulation" element={<LiveSimulation />} />
         <Route path="/lab" element={<AlgorithmLab />} />
-        <Route path="/analytics" element={<Placeholder title="Analytics" step={8} />} />
+        <Route path="/analytics" element={<AnalyticsDashboard />} />
         <Route path="/scenarios" element={<Placeholder title="Scenario Manager" step={9} />} />
         <Route path="/system" element={<Placeholder title="System" step={10} />} />
       </Routes>

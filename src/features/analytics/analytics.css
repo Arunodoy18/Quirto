@@ -1,0 +1,3 @@
+.an { height: 100%; display: grid; grid-template-rows: 56px minmax(0, 1fr); gap: var(--gap); }
+.an-filters { flex-direction: row; align-items: center; gap: 14px; padding: 0 14px; }
+.an-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: var(--gap); min-height: 0; }
