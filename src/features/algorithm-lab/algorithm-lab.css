@@ -1,0 +1,8 @@
+.lab { height: 100%; display: grid; grid-template-columns: 272px minmax(0, 1fr); grid-template-rows: 56px minmax(0, 1fr); gap: var(--gap); }
+.lab-banner { grid-column: 1 / span 2; flex-direction: row; align-items: center; gap: 14px; padding: 0 14px; }
+.lab-config { grid-column: 1; grid-row: 2; }
+.lab-main, .lab-empty { grid-column: 2; grid-row: 2; }
+.lab-main { display: grid; grid-template-rows: 96px auto minmax(0, 1fr); gap: var(--gap); min-height: 0; }
+.lab-cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); }
+.lab-charts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); min-height: 0; }
+.lab-empty { align-items: center; justify-content: center; gap: 12px; }

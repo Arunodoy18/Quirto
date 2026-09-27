@@ -4,6 +4,7 @@ import { Placeholder } from './components/ui/Placeholder';
 import CommandCenter from './features/command-center/CommandCenter';
 import RouteOptimization from './features/route-optimization/RouteOptimization';
 import LiveSimulation from './features/simulation/LiveSimulation';
+import AlgorithmLab from './features/algorithm-lab/AlgorithmLab';
 import { useWorld } from './hooks/useWorld';
 import { scenarioLabel } from './lib/format';
 import { isDemo } from './services';
@@ -22,7 +23,7 @@ export default function App() {
         <Route path="/" element={<CommandCenter />} />
         <Route path="/route" element={<RouteOptimization />} />
         <Route path="/simulation" element={<LiveSimulation />} />
-        <Route path="/lab" element={<Placeholder title="Algorithm Lab" step={7} />} />
+        <Route path="/lab" element={<AlgorithmLab />} />
         <Route path="/analytics" element={<Placeholder title="Analytics" step={8} />} />
         <Route path="/scenarios" element={<Placeholder title="Scenario Manager" step={9} />} />
         <Route path="/system" element={<Placeholder title="System" step={10} />} />
