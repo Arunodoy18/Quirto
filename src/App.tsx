@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/shell/AppShell';
 import { Placeholder } from './components/ui/Placeholder';
 import CommandCenter from './features/command-center/CommandCenter';
+import RouteOptimization from './features/route-optimization/RouteOptimization';
 import { useWorld } from './hooks/useWorld';
 import { scenarioLabel } from './lib/format';
 import { isDemo } from './services';
@@ -18,7 +19,7 @@ export default function App() {
     <AppShell status={status}>
       <Routes>
         <Route path="/" element={<CommandCenter />} />
-        <Route path="/route" element={<Placeholder title="Route Optimization" step={5} />} />
+        <Route path="/route" element={<RouteOptimization />} />
         <Route path="/simulation" element={<Placeholder title="Live Simulation" step={6} />} />
         <Route path="/lab" element={<Placeholder title="Algorithm Lab" step={7} />} />
         <Route path="/analytics" element={<Placeholder title="Analytics" step={8} />} />
