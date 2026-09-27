@@ -1,0 +1,5 @@
+.sys { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: 56px 210px minmax(0, 1fr); gap: var(--gap); }
+.sys-bar { grid-column: 1 / span 2; flex-direction: row; align-items: center; gap: 16px; padding: 0 14px; }
+.sys-cards { grid-column: 1 / span 2; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); }
+.sys-ws { grid-column: 1; overflow: auto; }
+.sys-log { grid-column: 2; }
