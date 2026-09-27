@@ -1,10 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/shell/AppShell';
 import { Placeholder } from './components/ui/Placeholder';
+import { useWorld } from './hooks/useWorld';
+import { scenarioLabel } from './lib/format';
+import { isDemo } from './services';
 
 export default function App() {
+  const { sim } = useWorld();
+  const status = {
+    sim: sim.running ? 'RUNNING' : 'PAUSED',
+    scenario: scenarioLabel(sim.scenario) + (sim.rain && sim.scenario !== 'rain' ? ' + Rain' : ''),
+    health: isDemo ? 'Backend not connected' : 'Connected',
+    healthOk: !isDemo
+  };
   return (
-    <AppShell status={{ sim: 'IDLE', scenario: 'Normal', health: 'Backend not connected', healthOk: false }}>
+    <AppShell status={status}>
       <Routes>
         <Route path="/" element={<Placeholder title="Command Center" step={4} />} />
         <Route path="/route" element={<Placeholder title="Route Optimization" step={5} />} />
