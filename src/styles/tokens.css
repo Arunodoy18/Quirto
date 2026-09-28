@@ -1,0 +1,74 @@
+/*
+ * QIRTO design tokens — "Graphite console"
+ * Neutral charcoal surfaces, one accent (signal amber), muted status colors.
+ * Every color in the app should come from here.
+ */
+:root {
+  /* surfaces */
+  --bg: #111214;
+  --bg-scene: #0e0f11;
+  --bg-chrome: #141518;
+  --panel: #17181b;
+  --field: #1d1f23;
+  --hover: #26282c;
+  --row-active: #232428;
+
+  /* lines */
+  --line: #2a2c31;
+  --line-soft: #222428;
+  --line-strong: #34363c;
+  --line-hover: #4a4d54;
+
+  /* text */
+  --text: #e6e6e3;
+  --text-strong: #f3f3f0;
+  --text-2: #c8c9ca;
+  --text-3: #a3a4a6;
+  --muted: #898b90;
+  --disabled: #6c6e74;
+
+  /* accent — UI actions & selection only */
+  --accent: #d99a2b;
+  --accent-hover: #e8ae45;
+  --accent-ink: #1a1407;
+  --accent-soft: #2a2419;
+  --accent-line: #6b5222;
+  --accent-text: #e8c27a;
+
+  /* status */
+  --ok: #5dae7b;
+  --warn: #c9a23c;
+  --danger: #d0493f;
+  --danger-soft: #1f1716;
+  --danger-line: #5a302c;
+  --danger-text: #e0948c;
+
+  /* road states (map) */
+  --road-free: #5dae7b;
+  --road-moderate: #c9a23c;
+  --road-congested: #cf713a;
+  --road-severe: #c8463f;
+  --road-closed: #6c6e74;
+
+  /* routes (map) */
+  --route-primary: #f0eee8;
+  --route-alt: #8e9096;
+  --route-rejected: #55575d;
+
+  /* algorithms (charts) */
+  --algo-dijkstra: #898b90;
+  --algo-astar: #c8c9ca;
+  --algo-ga: #6f9bb5;
+  --algo-pso: #9c8fc4;
+  --algo-qirto: #d99a2b;
+
+  /* type */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  /* shape */
+  --radius: 3px;
+  --rail-w: 76px;
+  --topbar-h: 52px;
+  --gap: 12px;
+}

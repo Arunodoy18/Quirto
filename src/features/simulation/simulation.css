@@ -1,0 +1,6 @@
+.sim { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 316px; grid-template-rows: 48px minmax(0, 1fr) 206px; gap: var(--gap); }
+.sim-toolbar { grid-column: 1; grid-row: 1; flex-direction: row; align-items: center; gap: 12px; padding: 0 8px; overflow: hidden; }
+.sim-map { grid-column: 1; grid-row: 2; position: relative; border: 1px solid var(--line); overflow: hidden; background: var(--bg-scene); }
+.sim-charts { grid-column: 1; grid-row: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.sim-right { grid-column: 2; grid-row: 1 / span 3; }
+.sim-float { position: absolute; z-index: 30; }

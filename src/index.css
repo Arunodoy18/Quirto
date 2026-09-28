@@ -1,0 +1,2 @@
+/* Re-export base styles — see src/styles/base.css for all primitives */
+@import './styles/base.css';

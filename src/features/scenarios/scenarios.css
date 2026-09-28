@@ -1,0 +1,4 @@
+.scn { height: 100%; display: grid; grid-template-columns: 300px minmax(0, 1fr) 340px; gap: var(--gap); }
+.scn-row { width: 100%; display: flex; flex-direction: column; gap: 4px; padding: 11px 12px; border: 0; border-bottom: 1px solid var(--line-soft); background: transparent; text-align: left; cursor: pointer; color: var(--text); }
+.scn-row:hover { background: var(--field); }
+.scn-row[aria-current='true'] { background: var(--row-active); }
