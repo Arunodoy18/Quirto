@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <input>
+        <net-file value="qirto.net.xml"/>
+        <route-files value="qirto.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="10000"/>
+    </time>
+    <gui_only>
+        <gui-settings-file value="gui.settings.xml"/>
+    </gui_only>
+</configuration>

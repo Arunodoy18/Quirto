@@ -8,7 +8,11 @@ import { API_URL, DATA_SOURCE } from '@/config';
 export const isDemo = DATA_SOURCE === 'demo';
 
 export class ApiError extends Error {
-  constructor(public status: number, message: string) { super(message); }
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
 }
 
 export async function http<T>(path: string, init: RequestInit = {}): Promise<T> {

@@ -27,7 +27,10 @@ class ChannelClient {
   private timer: ReturnType<typeof setTimeout> | undefined;
   state: ConnState = 'IDLE';
 
-  constructor(private path: Channel) {}
+  private path: Channel;
+  constructor(path: Channel) {
+    this.path = path;
+  }
 
   private connect() {
     if (this.ws) return;

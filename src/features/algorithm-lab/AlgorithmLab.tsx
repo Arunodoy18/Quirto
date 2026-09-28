@@ -10,7 +10,7 @@ const CONFIG: Array<[string, string]> = [
 ];
 
 export default function AlgorithmLab() {
-  const { data, loading, error } = useAsync(() => experimentService.latest(), []);
+  const { data, loading, error, reload } = useAsync(() => experimentService.latest(), []);
   const [showFixture, setShowFixture] = useState(true);
   const fixture = !!data?.fixture;
   const visible = data && (!fixture || showFixture);
@@ -27,7 +27,22 @@ export default function AlgorithmLab() {
             : 'Results from the backend experiment runner.'}
         </span>
         {fixture && <button className="btn-ghost" onClick={() => setShowFixture((v) => !v)}>{showFixture ? 'Hide fixture' : 'Show layout fixture'}</button>}
-        <button className="btn" style={{ height: 32, fontSize: 12.5 }} disabled={isDemo} title={isDemo ? 'Requires the FastAPI experiment endpoint' : undefined} onClick={() => void experimentService.run({})}>Run experiment</button>
+        <button 
+          className="btn" 
+          style={{ height: 32, fontSize: 12.5 }} 
+          disabled={isDemo || loading} 
+          title={isDemo ? 'Requires the FastAPI experiment endpoint' : undefined} 
+          onClick={async () => {
+            try {
+              await experimentService.run({});
+              reload();
+            } catch (err) {
+              console.error(err);
+            }
+          }}
+        >
+          {loading ? 'Running...' : 'Run experiment'}
+        </button>
       </div>
 
       <section className="panel lab-config" aria-label="Experiment configuration">
